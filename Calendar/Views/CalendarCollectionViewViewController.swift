@@ -13,7 +13,6 @@ class CalendarCollectionViewViewController: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: collectionLayout)
-        
         configure()
         setup()
     }
@@ -46,13 +45,14 @@ class CalendarCollectionViewViewController: UICollectionView {
 extension CalendarCollectionViewViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.configure(with: indexPath.item + 1)
         return cell
     }
     
